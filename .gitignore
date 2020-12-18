@@ -1,0 +1,15 @@
+### IntelliJ IDEA ###########
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### Node.js ###################
+node_modules/
+
+### Custom ##################
+.bak/
+.generated/
+.local/
+.tmp/
+*@tmp
