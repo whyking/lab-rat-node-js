@@ -1,0 +1,14 @@
+*.iml
+.bak/
+.generated/
+.local/
+.tmp/
+*@tmp
+*.tgz
+
+.github/
+test/
+.babelrc
+.editorconfig
+.eslintrc.js
+gulpfile.js
