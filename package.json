@@ -1,0 +1,24 @@
+{
+  "name": "@whyking/lab-rat-node-js",
+  "version": "1.0.0-alpha.0",
+  "description": "Whyking's \"Hello World!\"-ish playground Node.js application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whyking/lab-rat-node-js.git"
+  },
+  "keywords": [
+    "whyking",
+    "lab rat",
+    "hello world"
+  ],
+  "author": "Whyking (https://whyking.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/whyking/lab-rat-node-js/issues"
+  },
+  "homepage": "https://github.com/whyking/lab-rat-node-js#readme"
+}
