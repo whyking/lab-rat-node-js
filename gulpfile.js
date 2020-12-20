@@ -1,8 +1,9 @@
 /* eslint no-console: ["error", { allow: ["info"] }] */
 
 const { exec, set } = require('shelljs');
+const { series } = require('gulp');
 
-const build = (callback) => {
+const lint = (callback) => {
   set('-e');
 
   console.info('*****************************************************************************');
@@ -10,10 +11,22 @@ const build = (callback) => {
   console.info('*****************************************************************************');
   exec('npm run lint');
 
+  callback();
+};
+
+const test = (callback) => {
+  set('-e');
+
   console.info('*****************************************************************************');
   console.info('* Running the tests...');
   console.info('*****************************************************************************');
   exec('npm run test');
+
+  callback();
+};
+
+const publish = (callback) => {
+  set('-e');
 
   if (process.env.CI) {
     console.info('*****************************************************************************');
@@ -32,13 +45,19 @@ const build = (callback) => {
   callback();
 };
 
-const releaseAlpha = (callback) => {
+const createPreRelease = (preId) => (callback) => {
   set('-e');
 
   console.info('*****************************************************************************');
   console.info('* Preparing the new release...');
   console.info('*****************************************************************************');
-  exec('npm version prerelease --preid alpha --message "[release] %s"');
+  exec(`npm version prerelease --preid ${preId} --message "[release] %s"`);
+
+  callback();
+};
+
+const pushRelease = (callback) => {
+  set('-e');
 
   console.info('*****************************************************************************');
   console.info('* Checking the commit message...');
@@ -55,5 +74,6 @@ const releaseAlpha = (callback) => {
   callback();
 };
 
-exports.build = build;
-exports['release-alpha'] = releaseAlpha;
+exports.build = series(lint, test, publish);
+exports['release-alpha'] = series(createPreRelease('alpha'), pushRelease);
+exports['release-beta'] = series(createPreRelease('beta'), pushRelease);
