@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=whyking_lab-rat-node-js&metric=alert_status)](https://sonarcloud.io/dashboard?id=whyking_lab-rat-node-js)
+
 # whyking/lab-rat-node-js
 
 Whyking's "Hello World!"-ish playground Node.js application.

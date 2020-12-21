@@ -28,18 +28,16 @@ const test = (callback) => {
 const publish = (callback) => {
   set('-e');
 
-  if (process.env.CI) {
-    console.info('*****************************************************************************');
-    console.info('* Checking the commit message...');
-    console.info('*****************************************************************************');
-    const commitMessage = exec('git log -1 --pretty=%B', { silent: true }).stdout.trim();
+  console.info('*****************************************************************************');
+  console.info('* Checking the commit message...');
+  console.info('*****************************************************************************');
+  const commitMessage = exec('git log -1 --pretty=%B', { silent: true }).stdout.trim();
 
-    if (commitMessage.match(/^\[release] /)) {
-      console.info('*****************************************************************************');
-      console.info('* Publishing the application...');
-      console.info('*****************************************************************************');
-      exec('npm publish');
-    }
+  if (commitMessage.match(/^\[release] /)) {
+    console.info('*****************************************************************************');
+    console.info('* Publishing the application...');
+    console.info('*****************************************************************************');
+    exec('npm publish');
   }
 
   callback();
@@ -74,6 +72,8 @@ const pushRelease = (callback) => {
   callback();
 };
 
-exports.build = series(lint, test, publish);
+exports.build = series(lint, test);
 exports['release-alpha'] = series(createPreRelease('alpha'), pushRelease);
 exports['release-beta'] = series(createPreRelease('beta'), pushRelease);
+exports['release-rc'] = series(createPreRelease('rc'), pushRelease);
+exports.publish = series(publish);
