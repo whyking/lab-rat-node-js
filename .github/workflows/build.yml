@@ -27,13 +27,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Publish the application
-        run: |
-          echo '***************************************************'
-          echo '***************************************************'
-          echo '** WORKFLOW CALL...'
-          echo '***************************************************'
-          echo '***************************************************'
-          npm run publish
-          echo '***************************************************'
+        run: npm run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

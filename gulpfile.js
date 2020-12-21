@@ -79,6 +79,10 @@ const publish = (callback) => {
   set('-e');
 
   console.info('*****************************************************************************');
+  console.info('* Publish called...');
+  console.info('*****************************************************************************');
+
+  /* console.info('*****************************************************************************');
   console.info('* Checking the commit message...');
   console.info('*****************************************************************************');
   const commitMessage = exec('git log -1 --pretty=%B', { silent: true }).stdout.trim();
@@ -88,7 +92,7 @@ const publish = (callback) => {
     console.info('* Publishing the application...');
     console.info('*****************************************************************************');
     exec('npm publish');
-  }
+  } */
 
   callback();
 };
