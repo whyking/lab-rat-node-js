@@ -5,7 +5,8 @@
 
 # whyking/lab-rat-node-js
 
-Whyking's "Hello World!"-ish playground Node.js application.
+A "Hello World!"-ish playground application of [Node.js](https://nodejs.org/).
+This is my lab rat to set up build flows, tools, etc.
 
 ## Configuring npm for use with GitHub Packages
 
