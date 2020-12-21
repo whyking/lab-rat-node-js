@@ -8,6 +8,8 @@
     "test": "nyc mocha --require @babel/register --reporter spec",
     "build": "gulp build",
     "release-alpha": "gulp release-alpha",
+    "release-beta": "gulp release-beta",
+    "release-rc": "gulp release-rc",
     "publish": "gulp publish"
   },
   "repository": {
