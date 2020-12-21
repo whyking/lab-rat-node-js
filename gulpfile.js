@@ -25,24 +25,6 @@ const test = (callback) => {
   callback();
 };
 
-const publish = (callback) => {
-  set('-e');
-
-  console.info('*****************************************************************************');
-  console.info('* Checking the commit message...');
-  console.info('*****************************************************************************');
-  const commitMessage = exec('git log -1 --pretty=%B', { silent: true }).stdout.trim();
-
-  if (commitMessage.match(/^\[release] /)) {
-    console.info('*****************************************************************************');
-    console.info('* Publishing the application...');
-    console.info('*****************************************************************************');
-    exec('npm publish');
-  }
-
-  callback();
-};
-
 const createPreRelease = (preId) => (callback) => {
   set('-e');
 
@@ -68,6 +50,24 @@ const pushRelease = (callback) => {
   console.info('*****************************************************************************');
   exec('git push');
   exec(`git push origin ${tag}`);
+
+  callback();
+};
+
+const publish = (callback) => {
+  set('-e');
+
+  console.info('*****************************************************************************');
+  console.info('* Checking the commit message...');
+  console.info('*****************************************************************************');
+  const commitMessage = exec('git log -1 --pretty=%B', { silent: true }).stdout.trim();
+
+  if (commitMessage.match(/^\[release] /)) {
+    console.info('*****************************************************************************');
+    console.info('* Publishing the application...');
+    console.info('*****************************************************************************');
+    exec('npm publish');
+  }
 
   callback();
 };
