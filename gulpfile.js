@@ -54,6 +54,27 @@ const pushRelease = (callback) => {
   callback();
 };
 
+const nextDevelopmentIteration = (callback) => {
+  set('-e');
+
+  console.info('*****************************************************************************');
+  console.info('* Preparing the next development iteration...');
+  console.info('*****************************************************************************');
+  exec(
+    'npm version prerelease '
+    + '--no-git-tag-version '
+    + '--preid snapshot '
+    + '--message "The version of the next development iteration has been set up."',
+  );
+
+  console.info('*****************************************************************************');
+  console.info('* Pushing changes to the Git repository...');
+  console.info('*****************************************************************************');
+  exec('git push');
+
+  callback();
+};
+
 const publish = (callback) => {
   set('-e');
 
@@ -73,7 +94,7 @@ const publish = (callback) => {
 };
 
 exports.build = series(lint, test);
-exports['release-alpha'] = series(createPreRelease('alpha'), pushRelease);
-exports['release-beta'] = series(createPreRelease('beta'), pushRelease);
-exports['release-rc'] = series(createPreRelease('rc'), pushRelease);
+exports['release-alpha'] = series(createPreRelease('alpha'), pushRelease, nextDevelopmentIteration);
+exports['release-beta'] = series(createPreRelease('beta'), pushRelease, nextDevelopmentIteration);
+exports['release-rc'] = series(createPreRelease('rc'), pushRelease, nextDevelopmentIteration);
 exports.publish = publish;
