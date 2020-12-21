@@ -1,3 +1,4 @@
+[![Workflow 'Build' Status](https://github.com/whyking/lab-rat-node-js/workflows/Build/badge.svg)](https://github.com/whyking/lab-rat-node-js/actions?query=workflow%3ABuild)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=whyking_lab-rat-node-js&metric=alert_status)](https://sonarcloud.io/dashboard?id=whyking_lab-rat-node-js)
 
 # whyking/lab-rat-node-js
