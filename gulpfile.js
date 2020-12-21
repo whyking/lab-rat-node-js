@@ -76,4 +76,4 @@ exports.build = series(lint, test);
 exports['release-alpha'] = series(createPreRelease('alpha'), pushRelease);
 exports['release-beta'] = series(createPreRelease('beta'), pushRelease);
 exports['release-rc'] = series(createPreRelease('rc'), pushRelease);
-exports.publish = series(publish);
+exports.publish = publish;
