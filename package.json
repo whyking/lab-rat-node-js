@@ -1,6 +1,6 @@
 {
   "name": "@whyking/lab-rat-node-js",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "A \"Hello World!\"-ish playground application of Node.js.\nThis is my lab rat to set up build flows, tools, etc.",
   "main": "index.js",
   "scripts": {
